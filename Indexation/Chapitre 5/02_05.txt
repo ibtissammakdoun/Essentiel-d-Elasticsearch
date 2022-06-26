@@ -1,0 +1,56 @@
+DELETE /logs
+
+POST /_bulk
+  { "index": { "_index":"log", "_id":"1"} }
+  { "@timestamp": "2020-07-15T00:00:00", "message" : "Ceci est une ligne de log" }
+  { "index": { "_index":"log", "_id":"2"} }
+  { "@timestamp": "2020-07-15T00:00:01", "message" : "Ceci est une ligne de log" }
+  { "index": { "_index":"log", "_id":"3"} }
+  { "@timestamp": "2020-07-15T00:00:02", "message" : "Ceci est une ligne de log" }
+  { "index": { "_index":"log", "_id":"4"} }
+  { "@timestamp": "2020-07-15T00:00:03", "message" : "Ceci est une ligne de log" }
+
+
+POST /_bulk
+  { "index": { "_index":"log", "_id":"1"} }
+  { "@timestamp": "2020-07-15T00:00:00", "message" : "Ceci est une ligne de log" }
+  { "index": { "_index":"log", "_id":"2"} }
+  { "@timestamp": "2020-07-15T00:00:01", "message" : "Ceci est une ligne de log" }
+  { "index": { "_index":"log", "_id":"3"} }
+  { "@timestamp": "CECI NOT TIMESTAMP", "message" : "Ceci est une ligne de log" }
+  { "index": { "_index":"log", "_id":"4"} }
+  { "@timestamp": "2020-07-15T00:00:03", "message" : "Ceci est une ligne de log" }
+
+
+POST /_bulk
+  { "index": { "_index":"logs", "_id":"1"} }
+  { "message" : "version 1" }
+  { "index": { "_index":"logs", "_id":"1"} }
+  { "message" : "version 2" }
+  { "delete": { "_index":"logs", "_id":"1"} }
+  { "index": { "_index":"logs", "_id":"1"} }
+  { "message" : "version 1" }
+
+
+  POST /_bulk
+  { "index": { "_index":"logs", "_id":"1"} }
+  { "message" : "version 1" }
+  { "index": { "_index":"metrics", "_id":"1"} }
+  { "temperature" : 26.5 }
+  { "index": { "_index":"person", "_id":"1"} }
+  { "name" : "Ibtissam Makdoun" }
+
+
+POST /logs/_bulk
+  {"index": {}} 
+  {"@timestamp":"2020-07-15T00:00:00","message":"Ceci est une ligne de log"}
+  {"index": {}}
+  {"@timestamp":"2020-07-15T00:00:01","message":"Ceci est une ligne de log"}
+  {"index": {}}
+  {"@timestamp":"2020-07-15T00:00:02","message":"Ceci est une ligne de log"}
+  {"index": {}}
+  {"@timestamp":"2020-07-15T00:00:03","message":"Ceci est une ligne de log"}
+
+
+DELETE logs, metrics, person
+
