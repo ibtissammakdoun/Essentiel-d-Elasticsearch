@@ -1,0 +1,15 @@
+PUT cours/_doc/0
+{
+  "titre" : "Essentiel de Elasticsearch"
+}
+
+PUT cours/_doc/1
+{
+  "titre" : "Initiation au deep learning",
+  "commentaire": "deep learning pour débutant"
+}
+
+PUT cours/_doc/2
+{
+  "titre" : "Intiation à Elasticsearch"
+}
