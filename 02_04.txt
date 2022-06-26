@@ -1,0 +1,45 @@
+# Show a document
+GET /cours/_doc/1
+
+GET /cours/_doc/2
+GET /cours/_doc/3
+
+# Supprimer un document
+DELETE /cours/_doc/2
+
+PUT cours/_doc/2
+{
+  "titre" : "Intiation au deep learning",
+  "commentaire": "Cours deep learning",
+  "dateDePublication": "2022/06/16",
+  "duree": {
+    "nombre": 3,
+    "temps": "heures"
+  },
+  "chapitre": [
+    {"titre": "Introduction", "etape": 1},
+    {"titre": "ANN", "etape": 2},
+    {"titre": "CNN", "etape": 3},
+    {"titre": "RNN", "etape": 4},
+    {"titre": "Conclusion", "etape": 5}
+    ],
+  "auteur": "Ibtissam Makdoun"
+}
+
+GET /cours/_doc/3
+
+POST /cours/_doc/3
+{
+  "doc":{
+    "competence": ["machine learning", "scikit-learn"]
+  }
+}
+
+GET /cours/_doc/3
+
+POST /logs/_doc
+{
+  "@timestamp" :"2020-07-15T00:00:00",
+  "message": "ceci est important"
+}
+
