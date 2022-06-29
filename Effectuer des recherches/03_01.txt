@@ -1,0 +1,160 @@
+# Definir un mapping
+PUT /cours
+{
+	"mappings": {
+		"properties": {
+			"description": {
+			"type": "text"
+			},
+			"titre": {
+			"type": "text"
+			}
+		}
+	}
+}
+
+# Indexer des documents
+POST /cours/_bulk
+{"index":{}}
+{"titre": "Data Science Foundations: Fundementals", "description": "Data science is driving a world-wide revolution that touches everything from business automation to social interaction."}
+{"index":{}}
+{"titre": "Data Science Foundations: Fundamentals (2019)", "description": "Data science is driving a world-wide revolution that touches everything from business automation to social interaction. It’s also one of the fastest growing, most rewarding careers, employing analysts and engineers around the globe."}
+{"index":{}}
+{"titre": "Introduction to Data Science", "description": "The world of data science is reshaping every business. There is no better time to learn it than now. "}
+{"index":{}}
+{"titre": "Python for Data Science Essential Training Part 1", "description": "Python for Data Science Essential Training is one of the most popular data science courses. It has now been updated and expanded to two parts—for even more hands-on experience with Python."}
+{"index":{}}
+{"titre": "Storytelling with Data", "description": "So, you think you’re a bonafide data expert—but do you have what it takes to turn your data into a story? Your datasets may be powerful. But they can be more compelling if you show what’s at stake. "}
+{"index":{}}
+{"titre": "Learning Data Science: Understanding the Basics", "description": "Many of the people who work on data science teams won't be data scientists. They'll be the managers and associates who want to gain real business value from your organization's data. "}
+{"index":{}}
+{"titre": "Learning Data Science: Tell Stories With Data", "description": "Many anthropologists believe our early ancestors built societies around campfire stories about justice, leadership, and government. "}
+{"index":{}}
+{"titre": "A Day In The Life of a Data Scientist", "description": "The best way to understand what it's actually like to work as a data scientist is to spend the day with one. In this course, you can follow along with one day in the life of real data scientists working on real projects. "}
+{"index":{}}
+{"titre": "SQL Tips and Tricks for Data Science", "description": "Learn how to retrieve data, join tables, calculate rolling averages and rankings, work with dates and times, use window functions, aggregate and filter data, and much more."}
+{"index":{}}
+{"titre": "Tableau for Data Scientists", "description": "If your work requires any sort of graphical visualization of data, chances are you’ve run into Tableau. If you’ve been using Tableau but want to learn how to really harness its full power for data science,"}
+{"index":{}}
+{"titre": "GitHub for Data Scientists", "description": "Version control is rapidly becoming an essential skill for data scientists. In this course, learn how to get the most out of GitHub, "}
+{"index":{}}
+{"titre": "Intermediate SQL for Data Scientists", "description": "There is an increasing need for data scientists and analysts to understand relational data stores. Organizations have long used SQL databases to store transactional data as well as business intelligence related data. "}
+{"index":{}}
+{"titre": "Prepare for Your Data Science Interview", "description": "If you’re looking for work as a junior data analyst, engineer, or scientist, this course gives you the best techniques to land jobs in data science. "}
+{"index":{}}
+{"titre": "Python Data Analysis", "description": "Data science is transforming the way that government and industry leaders look at both specific problems and the world at large. "}
+{"index":{}}
+{"titre": "Learning Data Analytics: 1 Foundations", "description": "In this course, instructor brings you into the mind of an analyst. She defines and explains foundational concepts, such as how to think about data, how to work with others in different roles to get the data you need, and the tools you need to work with data, such as Excel and Microsoft Access. "}
+{"index":{}}
+{"titre": "Learning Data Visualization", "description": "Got a big idea? You need to get it across quickly and efficiently, or modern audiences will move on to the next story clamoring for their attention."}
+{"index":{}}
+{"titre": "Big Data in the Age of AI", "description": "The hype about big data may have peaked several years ago, but big data is far from gone. Instead it forms the foundation for some of today's most exciting technologies. Artificial intelligence (AI), machine learning, and data science rely on big data, or data that—by virtue of its velocity, volume, or variety—can't be easily stored or analyzed with traditional methods."}
+{"index":{}}
+{"titre": "When you need Data Big Volume?", "description": "Understand when you need data to be Big volume, check out my Github directory for the exercice files."}
+{"index":{}}
+{"titre": "Découvrir l'analyse de donnée", "description": "Les donnée sont importantes pour comprendre les enjeux et les défis dans notre société."}
+{"index":{}}
+{"titre": "Python : L'analyse de donnée", "description": "De nos jours, l'explosion du volume et de la variété des donnée ne laisse plus planer de doute : le rôle du data scientist sera central dans les années à venir."}
+{"index":{}}
+{"titre": "Les fondements de la data science", "description": "Ce cours donne une vue d'ensemble de la data science moderne, également appelée science des donnée en français, et qui est la pratique consistant à collecter, explorer, modéliser et interpréter des données. "}
+
+
+
+# chercher sur un Indexer
+GET /cours/_search
+
+
+GET /cours/_search {
+	"from": 10
+}
+
+GET /cours/_search {
+	"size": 17
+}
+
+GET /cours/_search {
+	"query":{
+		"match": {
+			"titre" : "Python"
+		}
+	}
+}
+
+
+GET /cours/_search {
+	"query":{
+		"bool" : {
+			"should": [
+				{
+					"match": {
+						"titre" : "Github"
+					}
+				},
+				{
+					"match": {
+						"description": "Github"
+					}
+				}
+
+			]
+		}
+	}	
+}
+
+
+GET /cours/_search {
+	"query":{
+		"bool" : {
+			"should": [
+				{
+					"match": {
+						"titre" : {
+							"query" : "Github",
+							"boost" : 5
+						}
+					}
+				},
+				{
+					"match": {
+						"description": "Github"
+					}
+				}
+
+			]
+		}
+	}	
+}
+
+# Chercher avec multi_match
+
+GET /cours/_search
+{
+	"query": {
+		"multi_match": {
+			"query" : "Github",
+			"fields" : ["titre", "description"]
+		}
+	}
+}
+
+GET /cours/_search
+{
+	"query": {
+		"multi_match": {
+			"query" : "Github",
+			"fields" : ["titre^5", "description"]
+		}
+	}
+}
+
+# Supporter les fautes de frappes
+GET /cours/_search
+{
+	"query": {
+		"multi_match": {
+			"query" : "Gitfub",
+			"fields" : ["titre^5", "description"],
+			"fuzziness": "auto"
+		}
+	}
+}

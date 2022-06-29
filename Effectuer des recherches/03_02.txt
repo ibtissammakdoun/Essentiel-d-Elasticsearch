@@ -1,0 +1,60 @@
+
+# Chercher avec différentes variations du meme mot
+GET /cours/_search
+{
+	"query": {
+		"multi_match": {
+			"query" : "donnée",
+			"fields" : ["titre", "description"]
+		}
+	}
+}
+
+GET /cours/_search
+{
+	"query": {
+		"multi_match": {
+			"query" : "données",
+			"fields" : ["titre", "description"]
+		}
+	}
+}
+
+
+GET /cours/_search
+{
+	"query": {
+		"multi_match": {
+			"query" : "donnee",
+			"fields" : ["titre", "description"]
+		}
+	}
+}
+
+# Comprendre l'API analyse
+
+GET /cours/_analyse
+{
+"field" : "titre",
+"text" : ["Analyse des données"]
+}
+
+
+GET /cours/_analyse
+{
+"field" : "titre",
+"text" : ["ANALYSE DES DONNÉES"]
+}
+
+
+GET /cours/_analyse
+{
+"field" : "titre",
+"text" : ["ANALYSE DES DONNÉES"]
+}
+
+GET /cours/_analyse
+{
+"field" : "titre",
+"text" : ["Données", "Donnée", "Donnée"]
+}
