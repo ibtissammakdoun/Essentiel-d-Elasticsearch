@@ -37,3 +37,23 @@ GET jobs/_search?track_total_hits=true
     "datepublication"
   ]
 }
+
+GET jobs/_search?track_total_hits=true
+{
+  "query": {
+    "match": {
+      "title": "téléconseiller"
+    }
+  },
+  "runtime_mappings": {
+    "jourPublication": {
+      "type": "keyword",
+      "script": {
+        "source": "emit(doc['datepublication'].value.dayOfWeekEnum.getDisplayName(TextStyle.FULL, new Locale('fr','FR')))"
+      }
+    }
+  }, 
+  "fields" : [
+    "jourPublication"
+  ]
+}
