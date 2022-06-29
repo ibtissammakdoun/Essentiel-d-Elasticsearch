@@ -1,0 +1,178 @@
+POST /cours/_doc
+{
+	"name": "Les algorithmes d'apprentissage",
+	"comments": "Le machine learning est une technique extrêmement performante permettant de réaliser des tâches cognitives diverses. Il permet de reconnaître des objets dans des images, de traduire automatiquement des textes, de jouer aux échecs ou au go, et plus généralement, de classer des observations à partir d'exemples. Cette mise en œuvre nécessite de maîtriser un ensemble de concepts. ",
+	"type": "intermédiaire",
+	"datePublication": "13/03/2022",
+	"nombrecomment": 50,
+	"ranking": 3,
+	"chapitres": {
+		"chapitre": [
+			{"name" : "Introduction", "datePublication":"13/03/2022", "type":"débutant"},
+			{"name" : "Découvrir l'intelligenve artificielle et le machine learning", "datePublication":"12/04/2022", "type":"intermédiaire"},
+			{"name" : "Recueillir et mettre en forme les données", "datePublication":"12/05/2022", "type":"intermédiaire"},
+			{"name" : "Découvrir les méthodes incontournables du machine learning", "datePublication":"12/05/2022", "type":"intermédiaire"},
+			{"name" : "Comprendre les réseaux de neurones et l'apprentissage profond", "datePublication":"12/05/2022", "type":"intermédiaire"},
+			{"name" : "Apprendre un modéle sur des données", "datePublication": "12/05/2022", "type":"intermédiaire"},
+			{"name" : "Mettre en oeuvre des méthodes", "datePublication":"12/05/2022", "type":"intermédiaire"},
+			{"name" : "Conclusion", "datePublication":"12/05/2022", "type":"intermédiaire"}
+
+		]
+	},
+	"content": "abcdefNolKPM"
+}
+
+POST /cours/_doc
+{
+	"name": "Go pour la data science",
+	"comments": "Entrez de plain-pied dans le monde du machine learning et du deep learning avec TensorFlow 2, la plateforme open source qui vous permet de développer des architectures de réseaux de neurones. Grâce à de nombreux exemples concrets, dont vous profiterez grâce aux fichiers d'exercice à votre disposition, vous apprendrez à travailler avec différentes bibliothèques et API (interfaces de programmation). Vous développerez et vous procéderez aux tests et au monitoring de réseaux de neurones. À la fin de cette formation, vous aborderez également les réseaux de neurones convolutifs.",
+	"type": "intermédiaire",
+	"datePublication": "12/04/2021",
+	"nombrecomment": 20,
+	"ranking": 4,
+	"chapitres": {
+		"chapitre": [
+			{"name" : "Introduction", "datePublication":"12/04/2021", "type":"débutant"},
+			{"name" : "Aborder le langage Go", "datePublication":"30/04/2021", "type":"débutant"},
+			{"name" : "Analyser les données avec le language Go", "datePublication":"01/05/2021", "type":"débutant"},
+			{"name" : "Faire du web scraping avec la langage Go", "datePublication":"15/05/2021", "type":"débutant"},
+			{"name" : "Déployer des algorithmes de machine learning en utilisant la biblithèque Go Sklearn", "datePublication":"21/05/2021", "type":"intermédiaire"},
+			{"name" : "Découvrir le NLP avec le langage Go", "datePublication": "30/05/2021", "type":"intermédiaire"},
+			{"name" : "Conclusion", "datePublication":"07/07/2021", "type":"débutant"}
+
+		]
+	},
+	"content": "LT5HigfNolKPM"
+}
+
+POST /cours/_doc
+{
+	"name": "TensorFlow pour le deep-learning",
+	"comments": "Entrez de plain-pied dans le monde du machine learning et du deep-learning avec TensorFlow 2, la plateforme open source qui vous permet de développer des architectures de réseaux de neurones. Grâce à de nombreux exemples concrets, dont vous profiterez grâce aux fichiers d'exercice à votre disposition, vous apprendrez à travailler avec différentes bibliothèques et API (interfaces de programmation). Vous développerez et vous procéderez aux tests et au monitoring de réseaux de neurones. À la fin de cette formation, vous aborderez également les réseaux de neurones convolutifs.",
+	"type": "avancé",
+	"datePublication": "12/11/2021",
+	"nombrecomment": 18,
+	"ranking": 5,
+	"chapitres": {
+		"chapitre": [
+			{"name" : "Introduction", "datePublication":"12/12/2021", "type":"débutant"},
+			{"name" : "Découvrir les réseaux de neurones", "datePublication":"30/01/2022", "type":"intermédiaire"},
+			{"name" : "Utiliser Tensorflow 2", "datePublication":"01/02/2022", "type":"intermédiaire"},
+			{"name" : "Mettre en oeuvre Sequential API de Tensorflow.Keras", "datePublication":"15/03/2022", "type":"avancé"},
+			{"name" : "Utiliser Functional API et Subclassing API", "datePublication":"21/04/2022", "type":"avancé"},
+			{"name" : "Contrôler et monitorer un réseau de neurones", "datePublication": "30/05/2022", "type":"avancé"},
+			{"name" : "Aborder CNN et le transfer learning", "datePublication": "30/06/2022", "type":"avancé"},
+			{"name" : "Conclusion", "datePublication":"07/07/2022", "type":"intermédiaire"}
+
+		]
+	},
+	"content": "ABcdefNPnMPM"
+}
+
+
+POST /cours/_doc
+{
+	"name": "Les fondements de l'informatique décisionnelle",
+	"comments": "L'informatique décisionnelle est une partie essentielle de l'informatique d'entreprise et de la gestion de données. Dans cette formation, vous allez aborder les fondamentaux de l'informatique décisionnelle. Il s'agit d'en maîtriser les aspects théoriques, le vocabulaire, l'architecture et les outils à disposition. Si vous êtes chef de projet ou développeur, et que vous devez monter un système décisionnel, cette formation vous donnera les bases pour bien comprendre les technologies et mettre à disposition des bases de données analytiques.",
+	"type": "avancé",
+	"datePublication": "29/09/2016",
+	"nombrecomment": 50,
+	"ranking": 5,
+	"chapitres": {
+		"chapitre": [
+			{"name" : "Introduction", "datePublication":"29/09/2016", "type":"débutant"},
+			{"name" : "Découvrir l'informatique décisionnelle", "datePublication":"25/10/2016", "type":"débutant"},
+			{"name" : "Découvrir l'architecture de l'informatique décisionnelle", "datePublication":"18/11/2016", "type":"débutant"},
+			{"name" : "Préndre en main les outils du décisionnel", "datePublication":"21/12/2016", "type":"débutant"}
+		]
+	},
+	"content": "ABcdefNPnMPM"
+}
+
+
+# Recherche booléean
+
+GET /cours/_search
+{
+	"query": {
+		"bool": {
+			"should": [
+				{
+					"match": {
+					"name": "deep-learning"
+					}
+				}
+			]
+		}
+	}
+}
+
+GET /cours/_search
+{
+	"query": {
+		"bool": {
+			"should": [
+				{
+					"match": {
+					"name": "deep-learning"
+					}
+				},
+				{
+					"term": {
+						"chapitres.chapitre.name" : "débutant"
+					}
+				}
+			],
+			"filter": [
+				{
+					"range": {
+						"ranking": {
+							"gte" : 4,
+							"lt" : 5
+						}
+					}
+				}
+			]
+		}
+	}
+}
+
+
+
+GET /cours/_search
+{
+	"query": {
+		"bool": {
+			"should": [
+				{
+					"match": {
+					"name": "deep-learning"
+					}
+				},
+				{
+					"term": {
+						"chapitres.chapitre.name" : "débutant"
+					}
+				}
+			],
+			"filter": [
+				{
+					"range": {
+						"ranking": {
+							"gte" : 3,
+							"lte" : 5
+						}
+					}
+				},
+				{
+					"range": {
+						"datePublication": {
+							"gt" : "31/12/2020",
+							"lte" : "31/12/2021"
+						}
+					}
+				}
+			]
+		}
+	}
+}

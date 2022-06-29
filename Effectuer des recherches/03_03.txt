@@ -1,0 +1,100 @@
+# Creer un analyseur
+POST /cours/_analyze {
+	"analyzer": "french",
+	"text": ["Analyse du texte"]
+}
+
+POST /cours/_analyze 
+{
+	"analyzer": "french",
+	"text": ["des avions"]
+}
+
+POST /cours/_analyze 
+{
+	"analyzer": "english",
+	"text": ["to be or not to be"]
+}
+
+
+POST /cours/_analyze 
+{
+	"char_filter": [],
+	"tokenizer": "standard",
+	"filter": [],
+	"text": ["Analyse de données", "Les bases du Web-mining", "Installer Wordpress chez un hébérgeur", "Programmation c#"]
+}
+
+POST /cours/_analyze 
+{
+	"char_filter": [{
+		"type": "mapping",
+		"mappings": [
+			"# => Sharp",
+			"++ => Plus Plus"
+ 		]
+	}],
+	"tokenizer": "standard",
+	"filter": [],
+	"text": ["Analyse de données", "Les bases du Web-mining", "Installer Wordpress chez un hébérgeur", "Programmation c#"]
+}
+
+POST /cours/_analyze 
+{
+	"char_filter": [{
+		"type": "mapping",
+		"mappings": [
+			"# => Sharp",
+			"++ => Plus Plus"
+ 		]
+	}],
+	"tokenizer": "whitespace",
+	"filter": [],
+	"text": ["Analyse de données", "Les bases du Web-mining", "Installer Wordpress chez un hébérgeur", "Programmation c#"]
+}
+
+POST /cours/_analyze 
+{
+	"char_filter": [{
+		"type": "mapping",
+		"mappings": [
+			"# => Sharp",
+			"++ => Plus Plus"
+ 		]
+	}],
+	"tokenizer": "whitespace",
+	"filter": [
+		"lowercase"
+	],
+	"text": ["Analyse de données", "Les bases du Web-mining", "Installer Wordpress chez un hébérgeur", "Programmation c#"]
+}
+
+POST /cours/_analyze 
+{
+	"char_filter": [{
+		"type": "mapping",
+		"mappings": [
+			"# => Sharp",
+			"++ => Plus Plus"
+ 		]
+	}],
+	"tokenizer": "whitespace",
+	"filter": [
+		"lowercase",
+		"asciifolding",
+		{
+			"type": "stop",
+			"stopwords": ["_french_","chez"]
+		},
+		{
+			"type": "stemmer",
+			"language": "light_french"
+		},
+		{
+			"type": "synonym",
+			"lentient": true,
+			"sysnonyms": ["Web-mining", "data-mining", "text-mining"]
+		}
+	],
+	"text": ["Analyse de données", "Les bases du Web-mining", "Installer Wordpress chez un hébérgeur", "Programmation c#"]
+}

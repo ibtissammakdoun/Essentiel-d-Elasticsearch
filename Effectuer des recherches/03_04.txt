@@ -1,0 +1,128 @@
+DELETE /cours
+
+
+
+# Créer le mapping
+PUT /cours
+{
+	"mappings": {
+		"properties": {
+			"comments": {
+				"type": "text",
+				"analyzer": "french"
+			},
+			"name": {
+				"type": "text"
+			}
+		}
+	}
+}
+
+# Insérer les données
+POST /cours/_bulk
+{"index":{}}
+{"competence": "Elasticsearch", "comments": "Elasticsearch pour les data-scientists"}
+{"index":{}}
+{"competence": "MongoDB", "comments": "MongoDB pour les data-scientists"}
+{"index":{}}
+{"competence": "Python", "comments": "Python pour les data-scientists"}
+{"index":{}}
+{"competence": "Machine-learning", "comments": "Machine-learning pour les data-scientists"}
+{"index":{}}
+{"competence": "Deep-Learning", "comments": "Deep-Learning pour les data-scientists"}
+
+
+# chercher des documents avec le terme datascientist
+
+GET /cours/_search
+{
+	"query": {
+		"multi_match": {
+			"query": "data-scientist",
+			"fields": ["competence^5", "comments"]
+		}
+	}
+}
+
+DELETE /cours
+POST /cours/_doc
+{
+	"name": "Intiation du Deep-Learning",
+	"comments": "Cours d'initiation au Deep-Learning",
+	"type": "Débutant",
+	"datePublication": "12/03/2022",
+	"nombrecomment": 10,
+	"ranking": 4.5,
+	"chapitres": {
+		"chapitre": [
+			{"name" : "Introduction", "datePublication":"12/03/2022", "type":"débutant"},
+			{"name" : "Architecture réseaux de neurones", "datePublication":"12/04/2022", "type":"débutant"},
+			{"name" : "Application réseaux de neurones", "datePublication":"12/05/2022", "type":"débutant"}
+		]
+	},
+	"content": "vyzrqNolKPM"
+}
+
+# récupérer le mapping
+GET /cours/_mapping
+
+
+# Configurer le mapping
+PUT /cours
+{
+    "mappings" : {
+      "properties" : {
+        "chapitres" : {
+          "properties" : {
+            "chapitre" : {
+              "properties" : {
+                "datePublication" : {
+                    "type" : "date",
+                    "format" : "dd/MM/yyyy"
+                   },
+                 "name" : {
+                    "type" : "text"
+                  },
+                  "type" : {
+                    "type" : "keyword"
+                  }
+              }
+            }
+          }
+        },
+        "comments" : {
+          "type" : "text",
+          "analyzer" : "french"
+        },
+        "competence" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "content" : {
+          "type" : "binary"
+        },
+        "datePublication" : {
+          "type" : "date",
+          "format" : "dd/MM/yyyy"
+        },
+        "name" : {
+          "type" : "text"
+        },
+        "nombrecomment" : {
+          "type" : "long"
+        },
+        "ranking" : {
+          "type" : "float"
+        },
+        "type" : {
+          "type" : "keyword"
+        }
+      }
+    }
+  }
+  
