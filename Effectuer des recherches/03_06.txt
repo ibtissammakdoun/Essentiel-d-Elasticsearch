@@ -1,0 +1,39 @@
+GET jobs/_search
+{
+  "size": 0
+}
+
+GET jobs/_search?track_total_hits=true
+{
+  "size": 0
+}
+
+
+GET jobs/_search?track_total_hits=true
+{
+  "query": {
+    "match": {
+      "title": "téléconseiller"
+    }
+  }
+}
+
+GET jobs/_search?track_total_hits=true
+{
+  "query": {
+    "match": {
+      "title": "téléconseiller"
+    }
+  },
+  "runtime_mappings": {
+    "datepublication" : {
+      "type" : "keyword",
+      "script" : {
+        "source" : "emit(doc['datepublication'].value.jourpublication.getDisplayName(TextStyle.FULL,new Locale('fr', 'FR')))"
+      }
+    }
+  },
+  "fields" : [
+    "datepublication"
+  ]
+}
