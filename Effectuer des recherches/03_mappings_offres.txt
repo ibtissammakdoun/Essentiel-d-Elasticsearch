@@ -1,0 +1,94 @@
+POST /jobs/_doc
+{
+    "link": "https://www.optioncarriere.ma//jobad/ma690c457731c0e28f5ac5cca99ba60ea8",
+"title":"Télévendeur Anglophone Expérimenté – Casablanca",
+"company" : "Rekrut'Academy",
+"description" : "\n  \n    Nous recrutons des Télévendeurs Anglophones Expérimentés à Casablanca.  Mission :  Gérer le service client pour des clients high end Informer, orienter le client sur les enchères, Fournir le statut d’avancement de leur commande, Gérer les formulaires, faire de la veille commerciale   Avant de prendre en charge la mission, une formation complète est assurée afin de le préparer aux responsabilités qui lui seront confiées.  A propos du poste :  Mode de Travail : SUR SITE Salaire + Prime de performance + Prime déplafonnée Type de profil : Bon niveau de communication en Anglais Expérience exigée: en télévente Contrat : CDI Formation : sur site Avantage sociaux : CNSSS/AMO/MUTUELLE PRIVEE Transport du personnel assuré.  Profil :  Parfaite maîtrise de la langue anglaise, avec une bonne aisance à l'oral comme à l'écrit Expérience en télémarketing est souhaitable Excellent niveau d’analyse de proactivité et d’autonomie. Bonne communication Excellent sens de l’argumentation. Logique commerciale. Réel sens de l'écoute. Empathie à toute épreuve Pass vaccinal (obligatoire). \n\n\n        Rekrut'Academy\n        \n\n\n", 
+"inserttime" :"2021-04-11",
+"datepublication" : "04/11/2021" ,
+"location": {"ville": "Casablanca", "pays": "Maroc", "location": {"lat": 33.5950627, "long": -7.6187768}},
+"salaire" : 0,
+"contrat": "CDI" 
+}
+
+PUT /jobs
+{"mappings" : {
+      "properties" : {
+        "company" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "contrat" : {
+          "type" : "keyword"
+        },
+        "datepublication" : {
+          "type" : "date",
+          "format" : "dd/MM/yyyy"
+        },
+        "description" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "inserttime" : {
+          "type" : "date"
+        },
+        "link" : {
+          "type" : "binary",
+        },
+        "location" : {
+          "properties" : {
+            "location" : {
+              "properties" : {
+                "lat" : {
+                  "type" : "float"
+                },
+                "long" : {
+                  "type" : "float"
+                }
+              }
+            },
+            "pays" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              }
+            },
+            "ville" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              }
+            }
+          }
+        },
+        "salaire" : {
+          "type" : "long"
+        },
+        "title" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        }
+      }
+    }
+}
