@@ -1,0 +1,43 @@
+PUT /geo 
+{
+  "mappings": {
+    "properties": {
+      "location" : {
+        "type": "geo_point"
+      }
+    }
+  }
+}
+POST /geo/_doc
+{
+  "location": {
+    "lat": 33.89,
+    "lon" : -5.54
+  }
+}
+
+POST /geo/_doc
+{
+  "location": "33.89, -5.54"
+}
+
+POST /geo/_doc
+{
+  "location": "eyh0ccmzs9us"
+}
+
+POST /geo/_doc
+{
+  "location": [-5.54, 33.89]
+}
+
+POST /geo/_doc
+{
+  "location": "POINT (-5.54 33.89)"
+}
+
+GET /geo/_search
+
+
+
+GET jobs/_mapping
