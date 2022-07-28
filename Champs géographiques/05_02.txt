@@ -1,0 +1,76 @@
+GET /jobs/_search
+{
+  "track_total_hits": true,
+  "size": 0,
+  "aggs": {
+    "ville": {
+      "terms": {
+        "field": "location.pays",
+        "size": 20
+      }
+    }
+  }
+}
+
+GET /jobs/_search
+{
+  "track_total_hits": true,
+  "query": {
+    "geo_distance": {
+      "distance": 2000,
+      "location.location": {
+        "lat": 33.9908,
+        "lon": -6.7204
+      }
+    }
+  }
+}
+
+# 33.6084, -7.6242
+# 33.6209, -7.481
+# 33.5299, -7.5469
+# 33.5056, -7.653
+# 33.5523, -7.7134
+
+
+
+GET /jobs/_search
+{
+  "track_total_hits": true,
+  "size": 1,
+  "query": {
+    "geo_shape": {
+      "location.location": {
+        "shape": {
+          "type": "polygon",
+          "coordinates": [
+            [
+              [
+                -7.6242,
+                33.6084
+              ],
+              [
+                -7.481,
+                33.6209
+              ],
+              [
+                -7.5469,
+                33.5299
+              ],
+              [
+                -7.653,
+                33.5056
+              ],
+              [
+                -7.7134,
+                33.5523
+              ]
+            ]
+          ]
+        },
+        "relation": "within"
+      }
+    }
+  }
+}
+

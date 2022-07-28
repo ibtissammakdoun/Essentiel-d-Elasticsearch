@@ -1,0 +1,56 @@
+GET /jobs/_search
+{
+  "track_total_hits": true,
+  "sort": [
+    {
+      "_geo_distance": {
+        "location.location": "33.99, -6.71"
+      }
+    }
+  ]
+}
+
+GET /jobs/_search
+{
+  "track_total_hits": true,
+  "sort": [
+    {
+      "_geo_distance": {
+        "location.location": "33.99, -6.71",
+        "unit": "km"
+      }
+    }
+  ]
+}
+
+GET /jobs/_search
+{
+  "track_total_hits": true,
+  "sort": [
+    {
+      "_geo_distance": {
+        "location.location": "33.99, -6.71",
+        "unit": "miles"
+      }
+    }
+  ]
+}
+
+GET /jobs/_search
+{
+  "track_total_hits": true,
+  "query": {
+    "geo_distance": {
+      "distance": "10km",
+      "location.location": "33.99, -6.71"
+    }
+  }, 
+  "sort": [
+    {
+      "_geo_distance": {
+        "location.location": "33.99, -6.71",
+        "unit": "km"
+      }
+    }
+  ]
+}
