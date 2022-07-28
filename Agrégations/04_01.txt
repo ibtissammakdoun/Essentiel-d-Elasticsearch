@@ -1,0 +1,93 @@
+GET /jobs/_search
+{
+	"track_total_hits": true,
+	"size": 0
+}
+
+# Repartition par un terme
+GET /jobs/_search
+{
+  "size": 0,
+  "track_total_hits": true,
+  "aggs": {
+    "par_contrat": {
+      "terms": {
+        "field": "contrat"
+      }
+  	}
+}
+}
+# Repartition par date
+
+GET /jobs/_search
+{
+  "size": 0,
+  "track_total_hits": true,
+  "aggs": {
+    "par_contrat": {
+      "terms": {
+        "field": "contrat"
+      }
+    },
+    "par_date":{
+      "date_histogram": {
+        "field": "date_publication",
+        "calendar_interval": "year"
+      }
+    }
+  }
+}
+# La moyenne de l'experience
+GET /jobs/_search
+{
+  "size": 0,
+  "track_total_hits": true,
+  "aggs": {
+    "par_contrat": {
+      "terms": {
+        "field": "contrat"
+      }
+    },
+    "par_date": {
+      "date_histogram": {
+        "field": "date_publication",
+        "calendar_interval": "year"
+      }
+    },
+    "par_experience": {
+      "avg": {
+        "field": "niveau_experience.dure"
+      }
+    }
+  }
+}
+# Aggregation par jour de publication (champ runtime)
+GET /jobs/_search
+{
+  "size": 0,
+  "track_total_hits": true,
+  "aggs": {
+    "par_contrat": {
+      "terms": {
+        "field": "contrat"
+      }
+    },
+    "par_date": {
+      "date_histogram": {
+        "field": "date_publication",
+        "calendar_interval": "year"
+      }
+    },
+    "par_experience": {
+      "avg": {
+        "field": "niveau_experience.dure"
+      }
+    },
+    "par_jour": {
+      "terms": {
+        "field": "jourPublication"
+      }
+    }
+    
+  }
+}
