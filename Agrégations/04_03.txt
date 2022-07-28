@@ -1,0 +1,107 @@
+GET /jobs/_search
+{
+  "size": 0,
+  "track_total_hits": true,
+  "aggs": {
+    "par_contrat": {
+      "terms": {
+        "field": "contrat"
+      },
+      "aggs": {
+        "par_experience": {
+          "avg": {
+            "field": "niveau_experience.dure"
+          }
+        },
+        "par_jour": {
+          "terms": {
+            "field": "jourPublication"
+          }
+        }
+      }
+    },
+    "par_date": {
+      "date_histogram": {
+        "field": "date_publication",
+        "calendar_interval": "year"
+      },
+      "aggs": {
+        "par_contrat": {
+          "terms": {
+            "field": "contrat"
+          },
+          "aggs": {
+            "par_experience": {
+              "avg": {
+                "field": "niveau_experience.dure"
+              }
+            }
+          }
+        }
+      }
+    },
+    "par_jour": {
+      "terms": {
+        "field": "jourPublication"
+      }
+    }
+  }
+}
+
+
+
+GET /jobs/_search
+{
+  "size": 0,
+  "track_total_hits": true,
+  "query": {
+    "match": {
+      "title": "ingénieur"
+    }
+  }, 
+  "aggs": {
+    "par_contrat": {
+      "terms": {
+        "field": "contrat"
+      },
+      "aggs": {
+        "par_experience": {
+          "avg": {
+            "field": "niveau_experience.dure"
+          }
+        },
+        "par_jour": {
+          "terms": {
+            "field": "jourPublication"
+          }
+        }
+      }
+    },
+    "par_date": {
+      "date_histogram": {
+        "field": "date_publication",
+        "calendar_interval": "year"
+      },
+      "aggs": {
+        "par_contrat": {
+          "terms": {
+            "field": "contrat"
+          },
+          "aggs": {
+            "par_experience": {
+              "avg": {
+                "field": "niveau_experience.dure"
+              }
+            }
+          }
+        }
+      }
+    },
+    "par_jour": {
+      "terms": {
+        "field": "jourPublication"
+      }
+    }
+  }
+}
+

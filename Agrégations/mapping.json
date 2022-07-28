@@ -1,0 +1,75 @@
+PUT /jobs
+{
+  "mappings": {
+    "properties": {
+      "contrat": {
+        "type": "keyword"
+      },
+      "date_publication": {
+        "type": "date",
+        "format": "dd/MM/yyyy"
+      },
+      "description": {
+        "properties": {
+          "desc": {
+            "type": "text",
+            "analyzer": "french"
+          },
+          "phrases": {
+            "type": "text",
+            "analyzer": "french"
+          },
+          "values": {
+            "properties": {
+              "mission": {
+                "type": "text",
+                "analyzer": "french"
+              },
+              "poste": {
+                "type": "text",
+                "analyzer": "french"
+              },
+              "profile": {
+                "type": "text",
+                "analyzer": "french"
+              }
+            }
+          }
+        }
+      },
+      "link": {
+        "type": "binary"
+      },
+      "location": {
+        "properties": {
+          "location": {
+            "type": "geo_point"
+          },
+          "pays": {
+            "type": "keyword"
+          },
+          "ville": {
+            "type": "keyword"
+          }
+        }
+      },
+      "niveau_etude": {
+        "type": "integer"
+      },
+      "niveau_experience": {
+        "properties": {
+          "dure": {
+            "type": "integer"
+          },
+          "metric": {
+            "type": "keyword"
+          }
+        }
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "french"
+      }
+    }
+  }
+}
